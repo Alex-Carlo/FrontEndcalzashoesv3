@@ -1,0 +1,135 @@
+<div class="template-index belle home6-modern">
+
+<div class="pageWrapper">
+  <!--Search Form Drawer-->
+  <div class="search">
+    <div class="search__form">
+      <form class="search-bar__form" action="#">
+        <button class="go-btn search__button" type="submit"><i class="icon anm anm-search-l"></i></button>
+        <input class="search__input" type="search" name="q" value="" placeholder="Search entire store..." aria-label="Search" autocomplete="off">
+      </form>
+      <button type="button" class="search-trigger close-btn"><i class="anm anm-times-l"></i></button>
+    </div>
+  </div>
+  <!--End Search Form Drawer-->
+  <!--Top Header-->
+  <div class="top-header">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-10 col-sm-8 col-md-5 col-lg-4">
+
+          <div class="language-dropdown">
+            <span class="language-dd">Español</span>
+            <ul id="language">
+              <li class="">German</li>
+              <li class="">French</li>
+            </ul>
+          </div>
+          <p class="phone-no"><i class="anm anm-phone-s"></i> +57 302 2826054</p>
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4 d-none d-lg-none d-md-block d-lg-block">
+          <div class="text-center"><p class="top-header_middle-text"> Calza con estilo y cuidate del Covid</p></div>
+        </div>
+        <div class="col-2 col-sm-4 col-md-3 col-lg-4 text-right">
+          <span class="user-menu d-block d-lg-none"><i class="anm anm-user-al" aria-hidden="true"></i></span>
+          <ul class="customer-links list-inline">
+            <li><a routerLink="/profile">{{authState === false ? 'Entrar' : 'Mi Cuenta'}}</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--End Top Header-->
+  <!--Header-->
+  <div class="header-wrap animated d-flex border-bottom">
+    <div class="container-fluid">
+      <div class="row align-items-center">
+        <!--Desktop Logo-->
+        <div class="logo col-md-2 col-lg-2 d-none d-lg-block">
+          <a href="index.html">
+
+            <img src="assets/images/logoter.png" height="40px" alt="Belle Multipurpose Html Template" title="Belle Multipurpose Html Template" />
+
+          </a>
+        </div>
+        <!--End Desktop Logo-->
+        <div class="col-2 col-sm-3 col-md-3 col-lg-8">
+          <div class="d-block d-lg-none">
+            <button type="button" class="btn--link site-header__menu js-mobile-nav-toggle mobile-nav--open">
+              <i class="icon anm anm-times-l"></i>
+              <i class="anm anm-bars-r"></i>
+            </button>
+          </div>
+          <!--Desktop Menu-->
+          <nav class="grid__item" id="AccessibleNav"><!-- for mobile -->
+            <ul id="siteNav" class="site-nav medium center hidearrow">
+              <li class="lvl1 parent megamenu"><a routerLink="/">Inicio <i class="anm anm-angle-down-l"></i></a>  </li>
+              <li class="lvl1 parent megamenu"><a routerLink="/shop/all">DE SHOPING :3 <i class="anm anm-angle-down-l"></i></a></li>
+              <li class="lvl1 parent dropdown"><a >CATEGORIAS <i class="anm anm-angle-down-l"></i></a>
+                <ul class="dropdown">
+                  <li><a class="site-nav">Mujer <i class="anm anm-angle-right-l"></i></a>
+                    <ul class="dropdown">
+                      <li><a routerLink="/shop/SANDALIAS PLATAFORMA" class="site-nav">Plataforma</a></li>
+                      <li><a routerLink="/shop/SANDALIAS SEMIPLATAFORMA" class="site-nav">Semi Plataforma</a></li>
+                      <li><a routerLink="/shop/SANDALIAS PLANAS" class="site-nav">Planas</a></li>
+                    </ul>
+                  </li>
+                  <li><a routerLink="/shop/SANDALIAS HOMBRES" class="site-nav">Hombres</a></li>
+                  <li><a routerLink="/shop/SANDALIAS NIÑAS" class="site-nav">Niños <span class="lbl nm_label1">Nuevo</span> </a></li>
+                </ul>
+              </li>
+              <li class="lvl1 parent "><a routerLink="/quienes">Quienes Somos? <i class="anm anm-angle-down-l"></i></a></li>
+            </ul>
+          </nav>
+          <!--End Desktop Menu-->
+        </div>
+        <!--Mobile Logo-->
+        <div class="col-6 col-sm-6 col-md-6 col-lg-2 d-block d-lg-none mobile-logo">
+          <div class="logo">
+            <a routerLink="/">
+              <img src="assets/images/logoter.png" alt="Calza Shoes" title="Calza Shoes" />
+            </a>
+          </div>
+        </div>
+        <!--Mobile Logo-->
+        <div class="col-4 col-sm-3 col-md-3 col-lg-2">
+          <div class="site-cart">
+          <div class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+
+              <a href="#" class="site-header__cart" title="Cart">
+                <i class="icon anm anm-bag-l"></i>
+                <span id="CartCount" class="site-header__cart-count" data-cart-render="item_count">{{cartData.data[0].numInCart != 0 ? cartData.data.length : 0}}</span>
+              </a>
+
+            </a>
+            <div class="cart-dropdown">
+              <div class="cart-list" *ngIf="cartData.data[0].numInCart != 0">
+                <div class="product-widget" *ngFor="let c of cartData.data; let i = index">
+                  <div class="product-img">
+                    <img [src]="c.products?.image" alt="{{c.products.name}}" width="20px">
+                  </div>
+                  <div class="product-body">
+                    <h3 class="product-name"><a href="#">{{c.products.name}}</a></h3>
+                    <h4 class="product-price"><span class="qty">{{c.numInCart}} x </span>{{c.products?.price | currency: 'COL'}} </h4>
+                  </div>
+                  <button class="delete" (click)="DeleteProductFromCart(i)"><i class="fa fa-close"></i></button>
+                </div>
+              </div>
+              <div class="cart-summary">
+                <small>{{cartData.data[0].numInCart != 0 ? cartData.data.length : 0}} Item(s) selected</small>
+                <h5>TOTAL:{{cartTotal | currency:'COL'}}</h5>
+              </div>
+              <div class="cart-btns">
+                <a routerLink="/cart">View Cart</a>
+                <a routerLink="/checkout">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
+              </div>
+            </div>
+          </div>
+            <!--End Minicart Popup-->
+          </div>
+        </div>
+
+      </div>
+
+

@@ -1,0 +1,99 @@
+<div class="page section-header text-center">
+  <div class="page-title">
+    <div class="wrapper"><h1 class="page-width" >CARRITO DE COMPRAS</h1> </div>
+    <div class="wrapper"*ngIf="cartData.data[0].numInCart==0">
+      <h2 class="page-width"> Vacio</h2>
+      <button class="btn btn-dark btn-lg mt-3" routerLink="/">Ir a Comprar</button>
+    </div>
+
+  </div>
+</div>
+<div class="container" *ngIf="cartData.data[0].numInCart!=0">
+  <div class="row">
+    <div class="col-12 col-sm-12 col-md-8 col-lg-8 main-col">
+      <form action="#" method="post" class="cart style2">
+        <table>
+          <thead class="cart__row cart__header">
+          <tr>
+            <th colspan="2" class="text-center">Producto</th>
+            <th class="text-center">Precio</th>
+            <th class="text-center">Cantidad</th>
+            <th class="text-right">Total</th>
+            <th class="action">&nbsp;</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr class="cart__row border-bottom line1 cart-flex border-top" *ngFor="let c of cartData.data; let i = index">
+            <td class="cart__image-wrapper cart-flex-item">
+              <a href="#"><img class="cart__image" [src]="c.products.image" alt="{{c.products.name}}"></a>
+            </td>
+            <td class="cart__meta small--text-left cart-flex-item">
+              <div class="list-view-item__title">
+                <a href="#">{{c.products.name}} </a>
+              </div>
+            </td>
+            <td class="cart__price-wrapper cart-flex-item">
+              <span class="money">${{c.products.price | currency:'COL'}}</span>
+            </td>
+            <td class="cart-flex-item text-right">
+              <div class="text-center">
+                <form>
+                  <div class="qtyField">
+                    <div class="value-button" id="decrementar" (click)="changeQuantity(i, false)">
+                      <i class="icon icon-minus"></i>
+                    </div>
+                    <input class="cart__qty-input qty" type="text"  id="number" [value]="c.numInCart" readonly [max]="c.products.quantity" >
+                    <div class="value-button" id="incrementar" (click)="changeQuantity(i, true)">
+                      <i class="icon icon-plus"></i>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </td>
+            <td class="text-right small--hide cart-price">
+              <div><span class="money">{{this.cartService.CalculateSubTotal(i)|currency:'COL'}}</span></div>
+            </td>
+            <td class="text-center small--hide"><a  class="btn btn--secondary cart__remove" title="Remove tem"><i class="icon icon anm anm-times-l" (click)="deleteFromCart(i)"></i></a></td>
+          </tr>
+
+          </tbody>
+          <tfoot>
+          <tr>
+            <td colspan="3" class="text-left"><a routerLink="/" class="btn--link cart-continue"><i class="icon icon-arrow-circle-left"></i> Continuar Comprando</a></td>
+            <td colspan="3" class="text-right"><button type="submit" name="update" class="btn--link cart-update"><i class="fa fa-refresh"></i> Actualizar</button></td>
+          </tr>
+          </tfoot>
+        </table>
+
+        <div class="currencymsg">Procesamos todos los pedidos en Pesos Colombianos. Si bien el contenido de su carrito se muestra actualmente en USD, el pago utilizará USD al tipo de cambio más actual.</div>
+        <hr>
+
+
+      </form>
+    </div>
+    <div class="col-12 col-sm-12 col-md-4 col-lg-4 cart__footer">
+      <div class="cart-note">
+        <div class="solid-border">
+          <h5><label for="CartSpecialInstructions" class="cart-note__label small--text-center">Add a note to your order</label></h5>
+          <textarea name="note" id="CartSpecialInstructions" class="cart-note__input"></textarea>
+        </div>
+      </div>
+      <div class="solid-border">
+        <div class="row">
+          <span class="col-12 col-sm-6 cart__subtotal-title"><strong>Subtotal</strong></span>
+          <span class="col-12 col-sm-6 cart__subtotal-title cart__subtotal text-right"><span class="money">{{cartTotal | currency:'COL'}}</span></span>
+        </div>
+        <div class="cart__shipping">Gastos de envío e impuestos calculados al finalizar la compra </div>
+        <p class="cart_tearm">
+          <label>
+            <input type="checkbox" name="tearm" id="cartTearm" class="checkbox" value="tearm" required="">
+            Estoy de acuerdo con los términos y condiciones
+          </label>
+        </p>
+        <a  id="cartCheckout" routerLink="/checkout" class="btn btn--small-wide checkout" >Checkout</a>
+        <div class="paymnet-img"><img src="assets/images/payment-img.jpg" alt="Payment"></div>
+      </div>
+
+    </div>
+  </div>
+</div>

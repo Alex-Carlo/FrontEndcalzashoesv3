@@ -1,0 +1,150 @@
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-scale-multiple"
+>
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>
+<div class="container" *ngIf="cartTotal > 0">
+
+  <div class="row">
+    <br>
+  <div class="row billing-fields">
+    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 sm-margin-30px-bottom">
+      <div class="create-ac-content bg-light-gray padding-20px-all">
+        <form>
+          <fieldset>
+            <h2 class="login-title mb-3">Billing details</h2>
+            <div class="row">
+              <div class="form-group col-md-6 col-lg-6 col-xl-6 required">
+                <label for="input-firstname">Primer Nombre <span class="required-f">*</span></label>
+                <input name="firstname" value="" id="input-firstname" type="text">
+              </div>
+              <div class="form-group col-md-6 col-lg-6 col-xl-6 required">
+                <label for="input-lastname">Segundo Nombre <span class="required-f">*</span></label>
+                <input name="lastname" value="" id="input-lastname" type="text">
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-md-6 col-lg-6 col-xl-6 required">
+                <label for="input-email">E-Mail <span class="required-f">*</span></label>
+                <input name="email" value="" id="input-email" type="email">
+              </div>
+              <div class="form-group col-md-6 col-lg-6 col-xl-6 required">
+                <label for="input-telephone">Telefono <span class="required-f">*</span></label>
+                <input name="telephone" value="" id="input-telephone" type="tel">
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <div class="row">
+              <div class="form-group col-md-6 col-lg-6 col-xl-6">
+                <label for="input-company">Company</label>
+                <input name="company" value="" id="input-company" type="text">
+              </div>
+              <div class="form-group col-md-6 col-lg-6 col-xl-6 required">
+                <label for="input-address-1">Direccion <span class="required-f">*</span></label>
+                <input name="address_1" value="" id="input-address-1" type="text">
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-md-6 col-lg-6 col-xl-6">
+                <label for="input-address-2">Apartamento <span class="required-f">*</span></label>
+                <input name="address_2" value="" id="input-address-2" type="text">
+              </div>
+              <div class="form-group col-md-6 col-lg-6 col-xl-6 required">
+                <label for="input-city">Ciudad <span class="required-f">*</span></label>
+                <input name="city" value="" id="input-city" type="text">
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-md-6 col-lg-6 col-xl-6 required">
+                <label for="input-postcode">Codigo Postal <span class="required-f">*</span></label>
+                <input name="postcode" value="" id="input-postcode" type="text">
+              </div>
+              
+            </div>
+            <div class="row">
+              <div class="form-group col-md-6 col-lg-6 col-xl-6 required">
+                <label for="input-zone">Departamento <span class="required-f">*</span></label>
+                <select name="zone_id" id="input-zone">
+                  <option value=""> --- Selecione Por favor ---</option>
+                  <option value="3513">Sucre</option>
+                  <option value="3514">Bolivar</option>
+                  <option value="3515">Cordoba</option>
+                  <option value="3516">Cundinamarca</option>
+                </select>
+              </div>
+            </div>
+          </fieldset>
+
+          
+
+          
+        </form>
+      </div>
+    </div>
+
+    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+      <div class="your-order-payment">
+        <div class="your-order">
+          <h2 class="order-title mb-4">Tu pedido <3</h2>
+
+          <div class="table-responsive-sm order-table">
+            <table class="bg-white table table-bordered table-hover text-center">
+              <thead>
+              <tr>
+                <th class="text-left">Nombre del Producto</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th>Subtotal</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let p of cartData.data">
+                <td class="text-left">{{p.products.name}}</td>
+                <td>${{p.products.price}}</td>
+                <td>{{p.numInCart}}</td>
+                <td>${{(p.products.price * p.numInCart)}}</td>
+              </tr>
+
+              <tr>
+                <td colspan="4" class="text-right">Total</td>
+                <td>${{cartTotal}}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="your-payment">
+          <h2 class="payment-title mb-3">METODOS DE PAGO</h2>
+          <div class="payment-method">
+            
+
+            <div class="order-button-payment">
+              <button class="btn btn-outline-danger btn-sm" value="Place order" type="submit" (click)="onCheckout()">Realizar Pedido</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+  <div class="page section-header text-center">
+  <div class="page-title">
+<div class="wrapper" *ngIf="cartData.total <= 0;"><h1 class="page-width" >No tienes nada para comprar, agrega productos a tu carrito :)</h1>
+  <div class="wrapper" >
+    <h2 class="page-width" >Vacio</h2>
+    <button class="btn btn-dark btn-lg mt-3" routerLink="/">Ir a Comprar</button>
+  </div>
+</div>
+  </div>
+  </div>
+

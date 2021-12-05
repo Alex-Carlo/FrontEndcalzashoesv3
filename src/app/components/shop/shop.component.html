@@ -1,0 +1,84 @@
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-3 col-lg-3 sidebar filterbar">
+                <div class="closeFilter d-block d-md-none d-lg-none"><i class="icon icon anm anm-times-l"></i></div>
+                <div class="sidebar_tags">
+                    <!--Categories-->
+                    <div class="sidebar_widget categories filter-widget">
+                        <div class="widget-title"><h2>Categories</h2></div>
+                        <div class="widget-content">
+                            <ul class="sidebar_categories">
+                
+                                <li class="lvl-1"><a routerLink="/shop/SANDALIAS PLATAFORMA" class="site-nav">SANDALIAS PLATAFORMA</a></li>
+                                <li class="lvl-1"><a routerLink="/shop/SANDALIAS SEMIPLATAFORMA" class="site-nav">SANDALIAS SEMIPLATAFORMA</a></li>
+                                <li class="lvl-1"><a routerLink="/shop/SANDALIAS HOMBRES"class="site-nav">SANDALIAS HOMBRES</a></li>
+                                <li class="lvl-1"><a routerLink="/shop/SANDALIAS NIÑAS" class="site-nav">SANDALIAS NIÑAS</a></li>
+                                <li class="lvl-1"><a routerLink="/shop/SANDALIAS PLANAS" class="site-nav">SANDALIAS PLANAS</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--Categories-->
+                   
+                    <!--Information-->
+                    <div class="sidebar_widget">
+                        <div class="widget-title"><h2>Informacion</h2></div>
+                        <div class="widget-content"><p>Bienvenidos a calza shoes, el mejor calzado de colombia. Disfruta de todos nuestros productos, eres importante para nostros aunque tengas cara de payaso.</p></div>
+                    </div>
+                   
+                </div>
+            </div>
+            <!-- /ASIDE -->
+
+            <!-- STORE -->
+            <div id="store" class="col-md-9">
+                <!-- store top filter -->
+                
+                <!-- /store top filter -->
+
+                <!-- store products -->
+                <div class="row">
+                    <!-- product -->
+                    
+                        <div class="col-md-3 col-xs-6" *ngFor="let p of products.products | paginate: { itemsPerPage: 8, currentPage: n }">
+                            <div class="product">
+                                <div class="product-img">
+                                    <img [src]="p.image" alt="{{p.name}}">
+                                </div>
+                                <div class="product-body">
+                                    <p class="product-category">{{p.category}}</p>
+                                    <h3 class="product-name"><a routerLink="/product/{{p.id}}">{{p.name}}</a></h3>
+                                    <h4 class="product-price">${{p.price | currency:'COL' }}</h4>
+                                    <div class="product-rating">
+                                    </div>
+                                </div>
+                                <div class="add-to-cart">
+                                    <button class="btn product-form__cart-submit" (click)="addToCart(p.id)"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    
+                    <!-- /product -->
+
+                    <div class="clearfix visible-lg visible-md"></div>
+
+                    
+                    <!-- /product -->
+                </div>
+                <!-- /store products -->
+
+                <!-- store bottom filter -->
+                <div class="store-filter clearfix">
+                  
+                <pagination-controls (pageChange)="n = $event"></pagination-controls>
+                </div>
+                <!-- /store bottom filter -->
+            </div>
+            <!-- /STORE -->
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>

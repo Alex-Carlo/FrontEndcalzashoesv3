@@ -1,0 +1,145 @@
+
+<!--Body Content-->
+<div class="template-index belle home6-modern">
+
+<div class="pageWrapper">
+<div id="page-content">
+  <!--Image Banners-->
+  <div class="section imgBanners">
+    <div class="imgBnrOuter">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+            <div class="img-bnr">
+              <div class="inner center">
+                <a routerLink="/shop/SANDALIAS HOMBRES">
+                  <img data-src="assets/images/collection/hombre.png" src="assets/images/collection/hombre.png" alt="Hombres" title="Hombres" class="blur-up lazyload" />
+                  <span class="ttl">Hombres</span>
+                </a>
+              </div>
+            </div>
+            <div class="img-bnr">
+              <div class="inner center">
+                <a routerLink="/shop/SANDALIAS NIÑAS">
+                  <img data-src="assets/images/collection/ninas.png" src="assets/images/collection/ninas.png" alt="Niñas" title="Niñas" class="blur-up lazyload" />
+                  <span class="ttl">Niñas</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+            <div class="inner center">
+              <a routerLink="/shop/SANDALIAS PLATAFORMA">
+                <img data-src="assets/images/collection/plataforma.png" src="assets/images/collection/plataforma.png" alt="Sanadalias Plataforma" title="plataforma" class="blur-up lazyload" />
+                <span class="ttl">Plataforma</span>
+              </a>
+            </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+            <div class="inner center">
+              <a routerLink="/shop/SANDALIAS SEMIPLATAFORMA">
+                <img data-src="assets/images/collection/semi.png" src="assets/images/collection/semi.png" alt="Jeans" title="Semi plataforma" class="blur-up lazyload" />
+                <span class="ttl">Semi plataforma</span>
+              </a>
+            </div>
+            <div class="inner center">
+              <a routerLink="/shop/SANDALIAS PLANAS">
+                <img data-src="assets/images/collection/sandalias.png" src="assets/images/collection/sandalias.png" alt="Shoes" title="Sandalias Planas" class="blur-up lazyload" />
+                <span class="ttl">Sandalias Planas</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--End Image Banners-->
+
+  <!--Featured Column-->
+  <div class="section featured-column">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+          <div class="section-header text-center">
+            <h2 class="h2">LO MAS NUEVO EN #CALZASHOES</h2>
+          </div>
+        </div>
+      </div>
+      <div class="row"  >
+        <!--Featured Item-->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-4 text-center"*ngFor="let p of products" >
+          <p>
+            <a>
+              <img class="blur-up lazyload" [src]="p.image" alt="{{p.name}}" (click)="selectedProducts(p.id)">
+            </a>
+          </p>
+          <h3 class="h4"><a routerLink="/product/{{p.id}}">{{p.name}}<span class="badge badge-info">{{p.price | currency: 'COL'}}</span></a></h3>
+          <h3><span class="badge badge-dark"></span>  </h3>
+          <div class="rte article__grid-excerpt">
+            {{p.description.substr(0,25)}}...
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+
+
+          <a href="#" class="btn no-border" [class.disabled]="p.quantity < 1" [class.btn-outline-danger]="p.quantity < 1" (click)="AddtoCart(p.id)">
+            {{p.quantity < 1 ? "NO HAY STOCK": "Anadir al Carrito"}}
+          </a>
+            <hr>
+          </div>
+
+        </div>
+
+
+        </div>
+        <!--End Featured Item-->
+        <!--Featured Item-->
+
+        <!--End Featured Item-->
+        <!--Featured Item-->
+
+        <!--End Featured Item-->
+      </div>
+    </div>
+  </div>
+  <!--End Featured Column-->
+
+
+
+  <!--Store Feature-->
+  <div class="store-feature section">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+          <ul class="display-table store-info">
+            <li class="display-table-cell">
+              <i class="icon anm anm-truck-l"></i>
+              <h5>Envio gratuito a todo Colombia</h5>
+              <span class="sub-text">
+                            		Sera un placer enviar el pedido hasta su casa
+                            	</span>
+            </li>
+            <li class="display-table-cell">
+              <i class="icon anm anm-money-bill-ar"></i>
+              <h5>Garantia de devolucion del dinero</h5>
+              <span class="sub-text">
+                                	No perderas tu dinero, no te preocupes
+                                </span>
+            </li>
+            <li class="display-table-cell">
+              <i class="icon anm anm-comments-l"></i>
+              <h5>24/7 Atencion al cliente</h5>
+              <span class="sub-text">
+                                	Sera un gusto poder resolver tus inquietudes
+                                </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--End Store Feature-->
+
+</div>
+</div>
+</div>
